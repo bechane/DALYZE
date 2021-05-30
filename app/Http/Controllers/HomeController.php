@@ -21,17 +21,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
     public function index()
     {
-        return view('pages.Home');
+        if (auth()->user()->is_admin == 0) {
+            return view('pages.Home');
+        } else {
+            return view('pages.adminHome');
+        }
     }
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function adminHome()
-    {
-        return view('pages.adminHome');
-    }
 }
