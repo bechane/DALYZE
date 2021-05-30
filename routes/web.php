@@ -30,3 +30,6 @@ Route::post('/manual-logout', function () {
     request()->session()->regenerateToken();
     return redirect('/login');
 });
+
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+//users we have => simple user / admin / modirator / manager  
